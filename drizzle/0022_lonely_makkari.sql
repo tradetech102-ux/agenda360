@@ -1,0 +1,1 @@
+ALTER TABLE `loanInstallments` MODIFY COLUMN `status` enum('pending','paid','partially_paid','overdue') DEFAULT 'pending';

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabela Financeira</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <img src="img/logo.png" alt="Agenda 360°" class="sidebar-logo">
+    <ul>
+      <li data-section="calendar" onclick="location.href='calendario.html'">
+        <i class="fas fa-calendar"></i> Calendário
+      </li>
+      <li data-section="clientes" onclick="location.href='clientes.html'">
+        <i class="fas fa-user"></i> Cadastro de Clientes
+      </li>
+      <li data-section="fornecedores" onclick="location.href='fornecedores.html'">
+        <i class="fas fa-user"></i> Fornecedores
+      </li>
+      <li data-section="tarefas" onclick="location.href='tarefas.html'">
+        <i class="fas fa-tasks"></i> Tarefas
+      </li>
+      <li data-section="produtos" onclick="location.href='produtos.html'">
+        <i class="fas fa-box"></i> Produtos
+      </li>
+      <li data-section="financeiro" onclick="location.href='financeiro.html'">
+        <i class="fas fa-hand-holding-usd"></i> Financeiro
+      </li>
+      <li data-section="tabela-emprestimos" onclick="location.href='emprestimos.html'">
+        <i class="fas fa-table"></i> Tabela de Empréstimos
+      </li>
+      <li data-section="tabela-financeira" onclick="location.href='tabela-financeira.html'">
+        <i class="fas fa-chart-pie"></i> Tabela Financeira
+      </li>
+      <li data-section="times" onclick="location.href='times.html'">
+        <i class="fas fa-users"></i> Times
+      </li>
+      <li data-section="vendas" onclick="location.href='vendas.html'">
+        <i class="fas fa-shopping-cart"></i> Vendas
+      </li>
+      <li data-section="relatorios" onclick="location.href='relatorios.html'">
+        <i class="fas fa-chart-bar"></i> Relatórios
+      </li>
+    </ul>
+  </div>
+  
+  <div class="content">
+  
+    <div id="tabela-financeira" class="form-section active">
+      <div class="container">
+        <h2>Tabela Financeira da Empresa</h2>
+        <div class="instructions">
+          <strong>Como usar:</strong>
+          <ul>
+            <li>Clique nos campos para inserir os valores da sua empresa</li>
+            <li>Use vírgula ou ponto como separador (ex.: 20000,00 ou 20.000,00)</li>
+            <li>Os valores são calculados automaticamente ao digitar</li>
+            <li>Clique em "Atualizar Gráficos" para visualizar os gráficos</li>
+          </ul>
+        </div>
+        <table>
+          <tr><th>Dado</th><th>Valor</th></tr>
+          <tr><td>Balanço Patrimonial</td><td><div class="currency-container"><span class="currency-prefix">R$</span><input type="text" class="currency-input blacksmith-ignore" data-key="balanco" placeholder="00000,00"></div></td></tr>
+          <tr><td>Faturamento</td><td><div class="currency-container"><span class="currency-prefix">R$</span><input type="text" class="currency-input blacksmith-ignore" data-key="faturamento" placeholder="00000,00"></div></td></tr>
+          <tr><td>Despesas</td><td><div class="currency-container"><span class="currency-prefix">R$</span><input type="text" class="currency-input blacksmith-ignore" data-key="despesas" placeholder="00000,00"></div></td></tr>
+          <tr><td>Investimento Inicial</td><td><div class="currency-container"><span class="currency-prefix">R$</span><input type="text" class="currency-input blacksmith-ignore" data-key="investimento" placeholder="00000,00"></div></td></tr>
+          <tr><td>Lucro Líquido</td><td class="calculated" id="lucro"></td></tr>
+          <tr><td>Margem de Lucro (%)</td><td class="calculated" id="margem"></td></tr>
+          <tr><td>Ponto de Equilíbrio (R$)</td><td class="calculated" id="pontoEquilibrio"></td></tr>
+          <tr><td>Payback (meses)</td><td class="calculated" id="payback"></td></tr>
+          <tr><td>ROI Anual (%)</td><td class="calculated" id="roi"></td></tr>
+        </table>
+
+        <h2>Distribuição do Lucro</h2>
+        <div>Lucro Líquido: <span id="lucro-display">R$ 0,00</span></div>
+        <table>
+          <tr><th>Item</th><th>Valor</th></tr>
+          <tr><td>Pró-labore</td><td><div class="currency-container"><span class="currency-prefix">R$</span><input type="text" class="currency-input blacksmith-ignore" data-key="proLabore" placeholder="00000,00"></div></td></tr>
+          <tr><td>Reinvestimento</td><td><div class="currency-container"><span class="currency-prefix">R$</span><input type="text" class="currency-input blacksmith-ignore" data-key="reinvestimento" placeholder="00000,00"></div></td></tr>
+          <tr><td>Reserva de Emergência</td><td><div class="currency-container"><span class="currency-prefix">R$</span><input type="text" class="currency-input blacksmith-ignore" data-key="reservaEmergencia" placeholder="00000,00"></div></td></tr>
+          <tr><td>Lucro Restante</td><td class="calculated" id="lucroRestante"></td></tr>
+        </table>
+
+        <button class="btn-atualizar" onclick="updateCharts()">Atualizar Gráficos</button>
+
+        <h2>Distribuição Percentual</h2>
+        <div class="chart-container">
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="distributionChart"></canvas>
+        </div>
+      </div>
+    </div>
+	
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/financeiro.js"></script>
+
+</body>
+</html>

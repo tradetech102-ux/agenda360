@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vendas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <img src="img/logo.png" alt="Agenda 360°" class="sidebar-logo">
+    <ul>
+      <li data-section="calendar" onclick="location.href='calendario.html'">
+        <i class="fas fa-calendar"></i> Calendário
+      </li>
+      <li data-section="clientes" onclick="location.href='clientes.html'">
+        <i class="fas fa-user"></i> Cadastro de Clientes
+      </li>
+      <li data-section="fornecedores" onclick="location.href='fornecedores.html'">
+        <i class="fas fa-user"></i> Fornecedores
+      </li>
+      <li data-section="tarefas" onclick="location.href='tarefas.html'">
+        <i class="fas fa-tasks"></i> Tarefas
+      </li>
+      <li data-section="produtos" onclick="location.href='produtos.html'">
+        <i class="fas fa-box"></i> Produtos
+      </li>
+      <li data-section="financeiro" onclick="location.href='financeiro.html'">
+        <i class="fas fa-hand-holding-usd"></i> Financeiro
+      </li>
+      <li data-section="tabela-emprestimos" onclick="location.href='emprestimos.html'">
+        <i class="fas fa-table"></i> Tabela de Empréstimos
+      </li>
+      <li data-section="tabela-financeira" onclick="location.href='tabela-financeira.html'">
+        <i class="fas fa-chart-pie"></i> Tabela Financeira
+      </li>
+      <li data-section="times" onclick="location.href='times.html'">
+        <i class="fas fa-users"></i> Times
+      </li>
+      <li data-section="vendas" onclick="location.href='vendas.html'">
+        <i class="fas fa-shopping-cart"></i> Vendas
+      </li>
+      <li data-section="relatorios" onclick="location.href='relatorios.html'">
+        <i class="fas fa-chart-bar"></i> Relatórios
+      </li>
+    </ul>
+  </div>
+  
+  <div class="content">
+  
+    <div id="vendas" class="form-section active">
+      <h1>Vendas</h1>
+      <div class="form-group">
+        <label>Produto:</label>
+        <select id="venda-produto"></select>
+        
+        <label>Cliente:</label>
+        <select id="venda-cliente"></select>
+        
+        <label>Quantidade:</label>
+        <input type="number" id="venda-quantidade" min="1" />
+        
+        <label>Data:</label>
+        <input type="date" id="venda-data" />
+        
+        <button onclick="saveVenda()">Registrar Venda</button>
+      </div>
+    </div>
+	
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/vendas.js"></script>
+
+</body>
+</html>

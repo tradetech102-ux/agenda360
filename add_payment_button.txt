@@ -1,0 +1,45 @@
+Substituir a seção de Pending Purchases (linhas 436-449) por:
+
+                      {/* Pending Purchases */}
+                      {pendingPurchases.length > 0 && (
+                        <div style={{ backgroundColor: COLORS.bgCard, borderRadius: "6px", padding: "8px", borderLeft: `3px solid ${COLORS.purple}` }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "4px" }}>
+                            <DollarSign size={12} style={{ color: COLORS.purple }} />
+                            <span style={{ color: COLORS.purple, fontSize: "11px", fontWeight: "600" }}>
+                              {pendingPurchases.length} compra{pendingPurchases.length !== 1 ? "s" : ""} a vencer
+                            </span>
+                          </div>
+                          <p style={{ color: COLORS.textPrimary, fontSize: "12px", fontWeight: "600", margin: "0 0 8px 0" }}>
+                            R$ {totalPending.toFixed(2)}
+                          </p>
+                          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                            {pendingPurchases.map((purchase) => (
+                              <div key={purchase.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "11px", color: COLORS.textSecondary }}>
+                                <span>{purchase.description} - R$ {parseFloat(purchase.amount as any).toFixed(2)}</span>
+                                <button
+                                  onClick={() => handleOpenPaymentModal(purchase)}
+                                  style={{
+                                    backgroundColor: "#10b981",
+                                    border: "none",
+                                    color: COLORS.textPrimary,
+                                    padding: "4px 8px",
+                                    borderRadius: "4px",
+                                    cursor: "pointer",
+                                    fontSize: "10px",
+                                    fontWeight: "600",
+                                    transition: "all 0.2s",
+                                  }}
+                                  onMouseEnter={(e) => {
+                                    (e.currentTarget as HTMLElement).style.backgroundColor = "#059669";
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    (e.currentTarget as HTMLElement).style.backgroundColor = "#10b981";
+                                  }}
+                                >
+                                  Pagar
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}

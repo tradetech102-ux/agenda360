@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Clientes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <img src="img/logo.png" alt="Agenda 360°" class="sidebar-logo">
+    <ul>
+      <li data-section="calendar" onclick="location.href='calendario.html'">
+        <i class="fas fa-calendar"></i> Calendário
+      </li>
+      <li data-section="clientes" onclick="location.href='clientes.html'">
+        <i class="fas fa-user"></i> Cadastro de Clientes
+      </li>
+      <li data-section="fornecedores" onclick="location.href='fornecedores.html'">
+        <i class="fas fa-user"></i> Fornecedores
+      </li>
+      <li data-section="tarefas" onclick="location.href='tarefas.html'">
+        <i class="fas fa-tasks"></i> Tarefas
+      </li>
+      <li data-section="produtos" onclick="location.href='produtos.html'">
+        <i class="fas fa-box"></i> Produtos
+      </li>
+      <li data-section="financeiro" onclick="location.href='financeiro.html'">
+        <i class="fas fa-hand-holding-usd"></i> Financeiro
+      </li>
+      <li data-section="tabela-emprestimos" onclick="location.href='emprestimos.html'">
+        <i class="fas fa-table"></i> Tabela de Empréstimos
+      </li>
+      <li data-section="tabela-financeira" onclick="location.href='tabela-financeira.html'">
+        <i class="fas fa-chart-pie"></i> Tabela Financeira
+      </li>
+      <li data-section="times" onclick="location.href='times.html'">
+        <i class="fas fa-users"></i> Times
+      </li>
+      <li data-section="vendas" onclick="location.href='vendas.html'">
+        <i class="fas fa-shopping-cart"></i> Vendas
+      </li>
+      <li data-section="relatorios" onclick="location.href='relatorios.html'">
+        <i class="fas fa-chart-bar"></i> Relatórios
+      </li>
+    </ul>
+  </div>
+  
+  <div class="content">
+  
+    <div id="clientes" class="form-section active">
+      <div class="header">
+        <span>AGENDA 360 TRADE TECH</span>
+      </div>
+      <h1>Cadastro de Clientes</h1>
+      <div class="form-container">
+        <label for="nome">Nome: *</label>
+        <input type="text" id="nome" placeholder="Digite o nome" required>
+        
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" placeholder="Digite o e-mail">
+        
+        <label for="telefone">Telefone: *</label>
+        <input type="tel" id="telefone" placeholder="Digite o telefone" required>
+        
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" placeholder="Digite o CPF">
+        
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" placeholder="Digite o RG">
+        
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" placeholder="Digite o endereço">
+        
+        <div class="button-container">
+          <button id="cadastrarBtn" class="cadastrar-btn" onclick="cadastrarOuEditarCliente()">
+            <i class="fas fa-user-plus"></i> Adicionar Cliente
+          </button>
+          <button id="cancelarBtn" class="cancel-btn" onclick="cancelarEdicao()" style="display: none;">Cancelar</button>
+        </div>
+      </div>
+
+      <h2>Clientes Cadastrados</h2>
+      <table id="tabelaClientes">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Endereço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="clientesBody"></tbody>
+      </table>
+    </div>    
+	
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/clientes.js"></script>
+
+</body>
+</html>

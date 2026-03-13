@@ -1,0 +1,1 @@
+ALTER TABLE `bankAccounts` MODIFY COLUMN `accountType` enum('checking','savings','investment','cash') DEFAULT 'checking';

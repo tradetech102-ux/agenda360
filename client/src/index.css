@@ -1,0 +1,758 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --primary: var(--color-blue-700);
+  --primary-foreground: var(--color-blue-50);
+  --sidebar-primary: var(--color-blue-600);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+  --radius: 0.65rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.235 0.015 65);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.235 0.015 65);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.235 0.015 65);
+  --secondary: oklch(0.98 0.001 286.375);
+  --secondary-foreground: oklch(0.4 0.015 65);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.141 0.005 285.823);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.623 0.214 259.815);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.235 0.015 65);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.623 0.214 259.815);
+}
+
+.dark {
+  --primary: var(--color-blue-700);
+  --primary-foreground: var(--color-blue-50);
+  --sidebar-primary: var(--color-blue-500);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.85 0.005 65);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.85 0.005 65);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.85 0.005 65);
+  --secondary: oklch(0.24 0.006 286.033);
+  --secondary-foreground: oklch(0.7 0.005 65);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground:  oklch(0.92 0.005 65);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.488 0.243 264.376);
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.85 0.005 65);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground:  oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.488 0.243 264.376);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Remove debug outlines from Manus */
+* {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+  outline-offset: 0 !important;
+}
+
+/* Customizar seleção de texto - remover highlight branco */
+::selection {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+::-moz-selection {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+*:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-offset: 0 !important;
+}
+
+*:focus-visible {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-offset: 0 !important;
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slideInLeft {
+    animation: slideInLeft 0.5s ease-out;
+  }
+
+  .animate-slideInRight {
+    animation: slideInRight 0.5s ease-out;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-shimmer {
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0)
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-lg {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-purple-600 to-blue-600;
+  }
+
+  .gradient-success {
+    @apply bg-gradient-to-r from-green-600 to-emerald-600;
+  }
+
+  .gradient-warning {
+    @apply bg-gradient-to-r from-yellow-600 to-orange-600;
+  }
+
+  .gradient-danger {
+    @apply bg-gradient-to-r from-red-600 to-pink-600;
+  }
+}
+
+
+/* Mobile-first responsive utilities for better touch targets and spacing */
+@layer utilities {
+  /* Ensure buttons and inputs have proper touch targets on mobile (48px minimum for better UX) */
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  select,
+  textarea {
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+  }
+
+  @media (min-width: 768px) {
+    button,
+    [role="button"],
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"],
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="time"],
+    select,
+    textarea {
+      min-height: 40px;
+    }
+  }
+
+  /* Responsive card padding - more generous on mobile */
+  .card {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .card {
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  /* Mobile-friendly form spacing - more generous */
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .form-group {
+      margin-bottom: 1.75rem;
+    }
+  }
+
+  /* Responsive modal/dialog widths - better padding on mobile */
+  [role="dialog"] {
+    width: 90vw;
+    max-width: 90vw;
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    [role="dialog"] {
+      width: auto;
+      max-width: 42rem;
+      padding: 2rem;
+    }
+  }
+
+  /* Table responsiveness - horizontal scroll on mobile */
+  table {
+    width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    table {
+      font-size: 0.875rem;
+    }
+
+    table th,
+    table td {
+      padding: 0.5rem;
+    }
+  }
+
+  /* Responsive gap utilities */
+  .gap-mobile {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .gap-mobile {
+      gap: 1rem;
+    }
+  }
+
+  /* Responsive padding utilities */
+  .px-mobile {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .px-mobile {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  .py-mobile {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .py-mobile {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  /* Ensure text is readable on mobile - reduced sizes */
+  body {
+    font-size: 0.9375rem;
+  }
+
+  /* Responsive heading sizes - optimized for mobile */
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 1.875rem;
+    }
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.0625rem;
+  }
+
+  @media (min-width: 768px) {
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+
+/* Extra mobile refinements for beautiful spacing and visual hierarchy */
+@media (max-width: 640px) {
+  /* Increase gap between sections */
+  .space-y-4 {
+    row-gap: 1.25rem;
+  }
+
+  .space-y-6 {
+    row-gap: 1.5rem;
+  }
+
+  /* Better button spacing in mobile */
+  .gap-2 {
+    gap: 0.75rem;
+  }
+
+  .gap-3 {
+    gap: 1rem;
+  }
+
+  .gap-4 {
+    gap: 1.25rem;
+  }
+
+  /* Improve input/textarea appearance on mobile */
+  input,
+  textarea,
+  select {
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+  }
+
+  /* Better label spacing */
+  label {
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  /* Improve button text readability */
+  button {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* Better spacing for lists and items */
+  li {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Improve section headers on mobile */
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+  }
+
+  /* Better spacing for form containers */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  /* Improve card borders and shadows on mobile */
+  .card,
+  [role="dialog"] {
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+  }
+
+  /* Better spacing for button groups */
+  .flex.gap-2 button,
+  .flex.gap-3 button {
+    flex: 1;
+  }
+}
+
+/* Smooth transitions for better feel */
+button,
+input,
+textarea,
+select,
+.card,
+[role="dialog"] {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Improve touch feedback on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  [role="button"],
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:active,
+  [role="button"]:active {
+    transform: scale(0.98);
+  }
+}
+
+
+/* Hide scrollbars while keeping scroll functionality - mobile optimized */
+html,
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide horizontal scrollbar on all elements */
+* {
+  overflow-x: hidden;
+}
+
+/* Make vertical scrollbar invisible but functional */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Ensure content doesn't overflow horizontally */
+@media (max-width: 640px) {
+  body,
+  html {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
+  main,
+  .container,
+  [role="main"] {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Ensure all elements respect viewport width */
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Fix tables to not overflow */
+  table {
+    width: 100%;
+    table-layout: auto;
+    overflow-x: hidden;
+  }
+
+  table th,
+  table td {
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  /* Fix modals to not overflow */
+  [role="dialog"] {
+    width: 90vw !important;
+    max-width: 90vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Fix cards to not overflow */
+  .card {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Ensure inputs don't overflow */
+  input,
+  textarea,
+  select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Fix flex containers to not overflow */
+  .flex {
+    overflow-x: hidden;
+  }
+
+  /* Ensure grid doesn't overflow */
+  .grid {
+    overflow-x: hidden;
+  }
+}
+
+
+/* Reduced font sizes for better mobile layout */
+@media (max-width: 640px) {
+  label {
+    font-size: 0.875rem;
+  }
+
+  button,
+  [role="button"] {
+    font-size: 0.875rem;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 0.875rem;
+  }
+
+  small {
+    font-size: 0.75rem;
+  }
+
+  .text-sm {
+    font-size: 0.8125rem;
+  }
+
+  .text-base {
+    font-size: 0.9375rem;
+  }
+
+  .text-lg {
+    font-size: 1.0625rem;
+  }
+
+  .text-xl {
+    font-size: 1.25rem;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+
+  /* Reduce sidebar text size */
+  nav button {
+    font-size: 0.875rem;
+  }
+
+  /* Reduce card titles */
+  .card h2,
+  .card h3,
+  .card h4 {
+    font-size: 1rem;
+  }
+
+  /* Reduce table text */
+  table {
+    font-size: 0.8125rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.375rem 0.5rem;
+  }
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `supplierPurchases` ADD `calendarEventId` int;

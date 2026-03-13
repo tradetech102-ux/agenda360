@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financeiro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <img src="img/logo.png" alt="Agenda 360°" class="sidebar-logo">
+    <ul>
+      <li data-section="calendar" onclick="location.href='calendario.html'">
+        <i class="fas fa-calendar"></i> Calendário
+      </li>
+      <li data-section="clientes" onclick="location.href='clientes.html'">
+        <i class="fas fa-user"></i> Cadastro de Clientes
+      </li>
+      <li data-section="fornecedores" onclick="location.href='fornecedores.html'">
+        <i class="fas fa-user"></i> Fornecedores
+      </li>
+      <li data-section="tarefas" onclick="location.href='tarefas.html'">
+        <i class="fas fa-tasks"></i> Tarefas
+      </li>
+      <li data-section="produtos" onclick="location.href='produtos.html'">
+        <i class="fas fa-box"></i> Produtos
+      </li>
+      <li data-section="financeiro" onclick="location.href='financeiro.html'">
+        <i class="fas fa-hand-holding-usd"></i> Financeiro
+      </li>
+      <li data-section="tabela-emprestimos" onclick="location.href='emprestimos.html'">
+        <i class="fas fa-table"></i> Tabela de Empréstimos
+      </li>
+      <li data-section="tabela-financeira" onclick="location.href='tabela-financeira.html'">
+        <i class="fas fa-chart-pie"></i> Tabela Financeira
+      </li>
+      <li data-section="times" onclick="location.href='times.html'">
+        <i class="fas fa-users"></i> Times
+      </li>
+      <li data-section="vendas" onclick="location.href='vendas.html'">
+        <i class="fas fa-shopping-cart"></i> Vendas
+      </li>
+      <li data-section="relatorios" onclick="location.href='relatorios.html'">
+        <i class="fas fa-chart-bar"></i> Relatórios
+      </li>
+    </ul>
+  </div>
+  
+  <div class="content">
+  
+    <div id="financeiro" class="form-section active">
+      <h1>Financeiro</h1>
+      <p>Lista de lançamentos financeiros aqui.</p>
+    </div>
+	
+  </div>
+  
+  <div id="finance-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('finance-modal')">×</span>
+      <h2>Lançamento Financeiro</h2>
+      <label>Forma de Pagamento:</label>
+      <select id="finance-payment">
+        <option>PIX</option>
+        <option>Dinheiro</option>
+        <option>Transferência</option>
+      </select>
+      <label>Banco:</label>
+      <select id="finance-bank">
+        <option>Itaú</option>
+        <option>Brasil</option>
+        <option>Picpay</option>
+      </select>
+      <label>Finalidade:</label>
+      <select id="finance-purpose">
+        <option>Venda</option>
+        <option>Manutenção</option>
+      </select>
+      <label>Tipo:</label>
+      <select id="finance-type">
+        <option>Entrada</option>
+        <option>Saída</option>
+      </select>
+      <label>Valor:</label><input type="number" step="0.01" id="finance-value" />
+      <label>Data:</label><input type="date" id="finance-date" />
+      <label>Hora:</label><input type="time" id="finance-time" />
+      <label>Conta:</label><input type="text" id="finance-account" />
+      <button onclick="saveFinanceiro()">Salvar</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/financeiro.js"></script>
+
+</body>
+</html>

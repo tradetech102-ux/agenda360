@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda 360° - Dashboard</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Fontes e ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bibliotecas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay"></div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <img src="img/logo.png" alt="Agenda 360°" class="sidebar-logo">
+    
+    <ul>
+      <li data-section="calendar" onclick="showSection('calendar')">
+        <i class="fas fa-calendar"></i> Calendário
+      </li>
+      <li data-section="clientes" onclick="showSection('clientes')">
+        <i class="fas fa-user"></i> Clientes
+      </li>
+      <li data-section="fornecedores" onclick="showSection('fornecedores')">
+        <i class="fas fa-handshake"></i> Fornecedores
+      </li>
+      <li data-section="tarefas" onclick="showSection('tarefas')">
+        <i class="fas fa-tasks"></i> Tarefas
+      </li>
+      <li data-section="produtos" onclick="showSection('produtos')">
+        <i class="fas fa-box"></i> Produtos
+      </li>
+      <li data-section="financeiro" onclick="showSection('financeiro')">
+        <i class="fas fa-dollar-sign"></i> Financeiro
+      </li>
+      <li data-section="tabela-emprestimos" onclick="showSection('tabela-emprestimos')">
+        <i class="fas fa-table"></i> Empréstimos
+      </li>
+      <li data-section="tabela-financeira" onclick="showSection('tabela-financeira')">
+        <i class="fas fa-chart-pie"></i> Financeira
+      </li>
+      <li data-section="times" onclick="showSection('times')">
+        <i class="fas fa-users"></i> Times
+      </li>
+      <li data-section="vendas" onclick="showSection('vendas')">
+        <i class="fas fa-shopping-cart"></i> Vendas
+      </li>
+      <li data-section="relatorios" onclick="showSection('relatorios')">
+        <i class="fas fa-chart-bar"></i> Relatórios
+      </li>
+    </ul>
+
+    <div class="sidebar-user">
+      <div class="sidebar-user-item">
+        <div class="sidebar-user-avatar">JM</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">João Marcos</div>
+          <div class="sidebar-user-role">Administrador</div>
+        </div>
+      </div>
+      <div class="sidebar-user-item" onclick="alert('Sair')">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sair</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        <div class="search-box">
+          <input type="text" placeholder="Buscar por palavra-chave...">
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <button class="notification-btn"><i class="fas fa-bell"></i></button>
+        <div class="profile-info">
+          <div class="profile-avatar">JM</div>
+          <div class="profile-text">
+            <div class="profile-name">João Marcos</div>
+            <div class="profile-role">Administrador</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+      <div id="dashboard" class="form-section active">
+        <h1>Bem-vindo ao Agenda 360°</h1>
+        <p style="color: #a0a0a0; margin-bottom: 30px;">Selecione uma opção no menu lateral para começar.</p>
+        
+        <div class="dashboard-cards">
+          <div class="card" onclick="showSection('calendar')" style="cursor:pointer">
+            <i class="fas fa-calendar"></i>
+            <h3>Calendário</h3>
+            <p>Gerencie seus eventos</p>
+          </div>
+          <div class="card" onclick="showSection('financeiro')" style="cursor:pointer">
+            <i class="fas fa-dollar-sign"></i>
+            <h3>Financeiro</h3>
+            <p>Controle suas finanças</p>
+          </div>
+          <div class="card" onclick="showSection('vendas')" style="cursor:pointer">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Vendas</h3>
+            <p>Registre novos pedidos</p>
+          </div>
+          <div class="card" onclick="showSection('clientes')" style="cursor:pointer">
+            <i class="fas fa-user"></i>
+            <h3>Clientes</h3>
+            <p>Gerencie seus clientes</p>
+          </div>
+          <div class="card" onclick="showSection('produtos')" style="cursor:pointer">
+            <i class="fas fa-box"></i>
+            <h3>Produtos</h3>
+            <p>Controle de estoque</p>
+          </div>
+          <div class="card" onclick="showSection('relatorios')" style="cursor:pointer">
+            <i class="fas fa-chart-bar"></i>
+            <h3>Relatórios</h3>
+            <p>Visualize seus dados</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Importar scripts em ordem -->
+  <script src="js/main.js"></script>
+  <script src="js/modals.js"></script>
+</body>
+</html>

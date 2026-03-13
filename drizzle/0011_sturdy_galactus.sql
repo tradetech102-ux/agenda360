@@ -1,0 +1,1 @@
+ALTER TABLE `sales` MODIFY COLUMN `productId` int;
